@@ -1,0 +1,38 @@
+﻿@using VechicleRegistration.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="adminBody">
+    @using (@Html.BeginForm("Login", "Admin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "adminForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <h3 style="max-width:800px; text-align:center">Administrator Login</h3>
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+             
+            @Html.LabelFor(m => m.Username, new { @class = "", @style = "max-width:800px; text-align:center" })
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @id= "matricNo" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group"> 
+
+            @Html.LabelFor(m => m.Password, new { @class = "", @style = "max-width:800px; text-align:center" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @id = "password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group" style="padding-top:10px;">
+            @*//<input onclick="showNext()" type="button" value="LOGIN" class="form-control btn btn-success" />*@
+            @*<a href="~/Admin/AdminPage" class='btn btn-success' role='button' style="width:100%">LOGIN</a>*@
+            <input type="submit" value="LOGIN" class='btn btn-success' role='button' style="width:100%" />
+        </div>
+    }
+    @*<form class="adminForm">
+
+    </form>*@
+</div>
+

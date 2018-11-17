@@ -1,0 +1,98 @@
+﻿@model VechicleRegistration.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QRCodeDetails.StudentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QRCodeDetails.StudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatricNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatricNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QrText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QrText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_modified)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

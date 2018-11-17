@@ -1,0 +1,106 @@
+﻿@model VechicleRegistration.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plate_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plate_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Drivers_License)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drivers_License)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_front)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_front)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_back)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_back)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle_side)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle_side)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proof_of_ownership)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proof_of_ownership)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_modified)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

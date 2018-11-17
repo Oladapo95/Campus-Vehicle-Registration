@@ -1,0 +1,398 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="bod">
+    <form id="firstform" role="form" class="needs-validation" novalidate>
+        <div class="form-group">
+            <label for="matricNo">MATRIC NUMBER</label>
+            <input type="number" class="form-control" id="validationCustommatricNo" placeholder="MATRIC NUMBER" required>
+            <div class="invalid-feedback" id="invalid">
+                Matric Number doesn't exist.
+            </div>
+            @*@Html.TextBoxFor(m => m.MatricNo, new { @class = "form-control", @id = "validationCustommatricNo", @placeholder = "MATRIC NUMBER", @required = "required" })*@
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please input a valid matric number.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="studentMail">STUDENT MAIL</label>
+            <input type="email" class="form-control" id="validationCustomstudentMail" placeholder="STUDENT MAIL" required>
+            @*@Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @id = "validationCustomstudentMail", @placeholder = "STUDENT MAIL", @required = "required" })*@
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please input a valid student mail.
+            </div>
+        </div>
+        <div class="form-group" style="padding-top:10px;">
+            <input type="button" value="PROCEED" class="form-control btn btn-success" id="showemailverdivButton" />
+        </div>
+        <br />
+        <div id="wait">
+            <img src='~/ajax-loader.gif ' id="waitimg" />
+        </div>
+
+    </form>
+
+    <form role="form">
+        <div class="form-group" id="emailverification" style="display:none">
+            <h4 style="text-align:center">Email Verification</h4>
+            <h6 style="max-width:800px; text-align:center">Enter the verification code sent to your student mail <b id="emailaddress"></b> </h6>
+            <label for="verificationCode">ENTER VERIFICATION CODE</label>
+            <input type="text" class="form-control" id="verificationCode" placeholder="VERIFICATION CODE"><label for="verificationCode" style="float:right; color:red " id="invalidcode"> </label>
+            <div class="form-group" style="padding-top:10px;">
+                <input type="button" value="PROCEED" class="form-control btn btn-success" id="showstudentinfodivButton" />
+            </div>
+            <div id="wait2">
+                <img src='~/ajax-loader.gif ' id="wait2img" />
+            </div>
+        </div>
+    </form>
+    <form style="display:none" id="studInfo">
+        <div class="form-group studInfo">
+            <div class="row">
+                <h3 style="width:800px; text-align:center">Student Information</h3>
+                <div class="col-lg-8">
+
+                    <label for="name">NAME</label>
+                    <input type="text" class="form-control " id="name" readonly>
+                    <label for="matricNo">MATRIC NUMBER</label>
+                    <input type="text" class="form-control" id="matricnumber" readonly>
+                    <label for="matricNo">DEPARTMENT</label>
+                    <input type="text" class="form-control" id="department" readonly>
+                    <label for="matricNo">FACULTY</label>
+                    <input type="text" class="form-control" id="faculty" readonly>
+                </div>
+                <div class="col-lg-4" style="width: 200px; height: 200px; text-align: center; margin: 0 auto;">
+                    <img id="imageprofile" class="img-thumbnail" alt="Thumbnail Image" style="float:right">
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+    <br />
+    <form role="form" style="display:none" id="platenumber">
+        <div class="form-group">
+            <h4 style="text-align:center">Liscenced Plate Number</h4>
+            <label for="verificationCode">PLATE NUMBER</label>
+            <input type="text" class="form-control" id="platenom"><label for="platenom" style="float:right; color:red " id="invalidplatenom"> </label>
+            <div class="form-group" style="padding-top:10px;">
+                <input onclick="showvechInfo()" type="button" value="PROCEED" class="form-control btn btn-success" id="showvechInfodivbutton" />
+            </div>
+        </div>
+        <div id="wait3">
+            <img src='~/ajax-loader.gif ' id="wait3img" />
+        </div>
+    </form>
+    <br />
+    <form>
+        <div class="form-group vechInfo" style="display:none" id="vechinfodiv">
+            <div class="row">
+                <h3 style="width:800px; text-align:center">Vechicle Information</h3>
+                <div class="col-lg-6">
+                    <label for="platenu">PLATE NUMBER</label>
+                    <input type="text" class="form-control " id="platenu" readonly>
+                    <label for="make">MAKE</label>
+                    <input type="text" class="form-control" id="make" readonly>
+                    <label for="color">COLOUR</label>
+                    <input type="text" class="form-control" id="color" readonly>
+                </div>
+                <div class="col-lg-6">
+                    <label for="chasisnumber">CHASIS NUMBER</label>
+                    <input type="text" class="form-control " id="chasisnumber" readonly>
+                    <label for="model">MODEL</label>
+                    <input type="text" class="form-control" id="model" readonly>
+                    <label for="year">YEAR</label>
+                    <input type="text" class="form-control" id="year" readonly>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <form style="display:none" id="docUpload" role="form">
+        <div class="form-group docUpload">
+            <h3 style="text-align:center; text-align:center">Documents Uploads</h3>
+            @*<div class="col-lg-6">
+                    <h5 for="name" style="margin-bottom:10px;">Vechicle Liscence</h5>
+                    <h5 for="matricNo" style="margin-top:40px;">Document 1</h5>
+                    <h5 for="matricNo" style="margin-top:30px;">Document 2</h5>
+                </div>
+                <div class="col-lg-6">
+                    <input type="file" class="form-control btn-success" value="UPLOAD" id="name" style="margin-bottom:10px; width:300px;">
+                    <input type="file" class="form-control btn-success" value="UPLOAD" id="matricNo" style="margin-bottom:10px; width:300px;">
+                    <input type="file" class="form-control btn-success" value="UPLOAD" id="matricNo" style="margin-bottom:10px; width:300px;">
+                </div>*@
+            <div class="form-group files" style="margin: 0 auto;">
+                <label>Please upload your scanned drivers liscense and other relevant documents</label>
+                <input type="file" class="form-control" multiple="">
+            </div>
+        </div>
+        <div class="form-group" style="padding-top:10px;">
+            <input type="button" value="SUBMIT" class="form-control btn btn-success" id="finalsubmit"  />
+        </div>
+        <div id="wait4">
+            <img src='~/ajax-processing.gif' id="wait4img" />
+        </div>
+    </form>
+
+</div>
+
+
+<script type="text/javascript">
+
+    var showLoadingEnabled = true;
+
+    function showemailverification() {
+
+        var matricno = document.getElementById("validationCustommatricNo");
+        var studentmail = document.getElementById("validationCustomstudentMail");
+        var studentaddress = document.getElementById("emailaddress");
+
+        var url = "/Home/GetStudentByMatricno";
+        var invalid = document.getElementById("invalid");
+        var emailverdiv = document.getElementById("emailverification");
+        var emailverdivbutton = document.getElementById("showemailverdivButton");
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { matricno: matricno.value, studentmail: studentmail.value },
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if (obj === null) {
+
+                    invalid.style.display = "block";
+                }
+                else {
+                    $("#name").val(obj.Student.name);
+                    $("#matricnumber").val(obj.Student.MatricNumber);
+                    $("#department").val(obj.Student.Department);
+                    $("#imageprofile").attr('src', obj.Student.ImageText);
+                    $("#email").val(obj.Student.Email);
+
+
+                    emailverdiv.style.display = "block";
+                    matricno.setAttribute("readonly", "readonly");
+                    studentmail.setAttribute("readonly", "readonly");
+                    emailverdivbutton.disabled = "true";
+                    invalid.style.display = "none";
+                    studentaddress.innerText = studentmail.value;
+
+
+                }
+
+            }
+        })
+    }
+
+    function showstudInfo() {
+        var x = document.getElementById("matricNo");
+
+        var url = "/Home/GetToken";
+        var studInfodiv = document.getElementById("studInfo");
+        var platenumberdiv = document.getElementById("platenumber");
+        var verificationCode = document.getElementById("verificationCode");
+        var invalidcodelabel = document.getElementById("invalidcode");
+        var studentmail = document.getElementById("validationCustomstudentMail");
+        var studentmatricno = document.getElementById("validationCustommatricNo");
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { token: verificationCode.value, studentmail: studentmail.value, matricno: studentmatricno.value },
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if (obj == null) {
+                    invalidcodelabel.innerText = "INVALID CODE";
+                    studInfodiv.style.display = "none";
+                    platenumberdiv.style.display = "none";
+                }
+                else {
+                    $("#name").val(obj.Student.name);
+                    $("#matricnumber").val(obj.Student.MatricNumber);
+                    $("#faculty").val(obj.Student.Faculty);
+                    $("#department").val(obj.Student.Department);
+                    $("#imageprofile").attr('src', obj.Student.ImageText);
+                    $("#email").val(obj.Student.Email);
+
+                    studInfodiv.style.display = "block";
+                    platenumberdiv.style.display = "block";
+                    invalidcodelabel.innerText = "";
+
+                    verificationCode.setAttribute("readonly", "readonly");
+                    $("#showstudentinfodivButton").attr('disabled', 'true');
+                }
+
+            }
+        })
+    }
+
+    function showvechInfo() {
+
+        $("#wait3").css("display", "block");
+
+        var vechinfodiv = document.getElementById("vechinfodiv");
+        var docUploaddiv = document.getElementById("docUpload");
+        var platenombox = document.getElementById("platenom");
+        var showvechInfodivbutton = document.getElementById("showvechInfodivbutton");
+        var invalidplate = document.getElementById("invalidplatenom");
+
+        var url = "/Home/GetPlateById?num=" + platenombox.value;
+
+        $.ajax({
+            type: "GET",
+            url: url,
+
+            success: function (data) {
+                var obj = JSON.parse(data);
+                if (obj == null) {
+                    invalidplate.innerText = "INVALID CODE";
+                    vechinfodiv.style.display = "none";
+                    docUploaddiv.style.display = "none";
+                }
+                else {
+                    $("#make").val(obj.Make);
+                    $("#color").val(obj.Color);
+                    $("#chasisnumber").val(obj.Chasis_number);
+                    $("#model").val(obj.Model);
+                    $("#year").val(obj.Year);
+                    $("#platenu").val(obj.Plate_number);
+
+                    platenombox.setAttribute("readonly", "readonly");
+                    showvechInfodivbutton.disabled = "true";
+                }
+                if (vechinfodiv.style.display === "none") {
+                    vechinfodiv.style.display = "block";
+                    docUploaddiv.style.display = "block";
+                } else {
+                    vechinfodiv.style.display = "none";
+                    docUploaddiv.style.display = "none";
+                }
+                $("#wait3").css("display", "none");
+            }
+        })
+
+    }
+
+    function finalsubmit() {
+
+        //This are the details for temporary slip
+        var name = document.getElementById("name");
+        var matricnumber = document.getElementById("matricnumber");
+        var department = document.getElementById("department");
+        var platenumber = document.getElementById("platenu");
+        var make = document.getElementById("make");
+        var model = document.getElementById("model");
+        var color = document.getElementById("color");
+        var url = "/Home/CreateTempSlip";
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                name: name.value, matricnumber: matricnumber.value, department: department.value, platenumber: platenumber.value,
+                make: make.value, model: model.value, color: color.value }, 
+                success: function (data) {
+                    var obj = JSON.parse(data);
+                    if (obj.StatusCode !== "00") {
+                        alert("There was an error submitting your application please start over");
+                    }
+                    else   {
+                        alert("You will now be Redirected");
+                        window.location = "/Home/Success";
+
+                    }
+
+                }
+            })
+
+    }
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    //(function () {
+    //    'use strict';
+    //    window.addEventListener('load', function () {
+    //        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    //        var forms = document.getElementsByClassName('needs-validation');
+    //        // Loop over them and prevent submission
+    //        var validation = Array.prototype.filter.call(forms, function (form) {
+    //            form.addEventListener('submit', function (event) {
+    //                if (form.checkValidity() === false) {
+    //                    event.preventDefault();
+    //                    event.stopPropagation();
+    //                }
+    //                form.classList.add('was-validated');
+    //                showemailverification();
+    //            }, false);
+    //        });
+    //    }, false);
+    //})();
+
+    $(document).ready(function () {
+        validate();
+        $('#validationCustommatricNo, #validationCustomstudentMail').change(validate);
+    });
+
+    function validate() {
+        if ($('#validationCustommatricNo').val().length > 5 && $('#validationCustommatricNo').val().length < 7 &&
+            $('#validationCustomstudentMail').val().length > 10) {
+            $("input[type=button]").prop("disabled", false);
+        }
+        else {
+            $("input[type=button]").prop("disabled", true);
+        }
+    }
+
+    $(document).ready(function () {
+
+        $(document).ajaxStart(function () {
+            if (showLoadingEnabled) {
+                $("#wait").css("display", "block");
+                $(this).show();
+            }
+        });
+        $(document).ajaxComplete(function () {
+            if (showLoadingEnabled) {
+                $("#wait").css("display", "none");
+                showLoadingEnabled = false;
+                $(this).hide();
+            }
+        });
+
+        $("#showemailverdivButton").click(function () {
+            showemailverification();
+        });
+    });
+
+    $(document).ready(function () {
+        $(document).ajaxStart(function () {
+
+            $("#wait2").css("display", "block");
+            $(this).show();
+        });
+        $(document).ajaxComplete(function () {
+            $("#wait2").css("display", "none");
+            $(this).hide();
+        });
+        $("#showstudentinfodivButton").click(function () {
+            showstudInfo();
+
+        });
+
+    });
+    $(document).ready(function () {
+
+        $("#finalsubmit").click(function () {
+            finalsubmit();
+
+        });
+
+    });
+
+</script>

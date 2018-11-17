@@ -1,0 +1,93 @@
+﻿@model IEnumerable<VechicleRegistration.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plate_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Drivers_License)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicle_front)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicle_back)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehicle_side)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proof_of_ownership)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_modified)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plate_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drivers_License)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicle_front)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicle_back)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehicle_side)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proof_of_ownership)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_modified)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VehicleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VehicleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VehicleID })
+        </td>
+    </tr>
+}
+
+</table>

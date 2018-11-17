@@ -1,0 +1,107 @@
+﻿@using MVCGrid.Web
+@using VechicleRegistration.Models
+@model VechicleRegistration.Models.StudentViewModel
+@{
+    ViewBag.Title = "AdminPage";
+}
+
+<div class="adminviewbody">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.Partial("_MVCGridToolbar", new MVCGridToolbarModel()
+       {
+           MVCGridName = "SGrid",
+           PageSize = true,
+           GlobalSearch = true 
+       })
+            @Html.MVCGrid("SGrid")
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="MyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="form">
+                    <div class="form-group">
+                        <label for="name">EMAIL</label>
+                        <input type="text" class="form-control" id="email" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentMail">MATRIC NUMBER</label>
+                        <input type="text" class="form-control" id="matricnumber" placeholder="MATRIC NUMBER">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentMail">DEPARTMENT</label>
+                        <input type="text" class="form-control" id="department" placeholder="DEPARTMENT">
+                    </div>
+                    <br />
+                    <h4>Vehicle Information</h4>
+                    <br />
+                    <div class="form-group">
+                        <label for="name">Plate Number</label>
+                        <input type="text" class="form-control" id="platenumber" placeholder="Plate_number">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentMail">Make</label>
+                        <input type="text" class="form-control" id="make" placeholder="Make">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentMail">Color</label>
+                        <input type="text" class="form-control" id="color" placeholder="color">
+                    </div>
+                    <div class="form-group" style="padding-top:10px;">
+                        <input onclick="showNext()" type="button" value="EXIT" class="form-control btn btn-danger" />
+                    </div>
+                    <div class="form-group">
+                        <img id="imageprofile" class="img-thumbnail" alt="Thumbnail Image">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //Show The Popup Modal For Add New Student
+
+    function showDetails(StudentId) {
+        $("#form")[0].reset();
+        $("#StuId").val(0);
+        $("#DropDwn option:selected").text("--Select Dept--");
+        $("#ModalTitle").html("Show Details");
+        $("#MyModal").modal();
+
+    }
+
+    //Show The Popup Modal For Edit Student Record
+
+    function viewRecord(StudentId) {
+        var url = "/Admin/GetStudentById?id=" + StudentId;
+        $("#ModalTitle").html("Student Information");
+        $("#MyModal").modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#StuId").val(obj.StudentId);
+                $("#make").val(obj.Make);
+                $("#color").val(obj.Color);
+                $("#platenumber").val(obj.Plate_number);
+                $("#matricnumber").val(obj.Student.MatricNumber);
+                $("#department").val(obj.Student.Department);
+                $("#email").val(obj.Student.Email);
+                $("#imageprofile").attr('src', obj.Student.QrText);
+            }
+        })
+    }
+</script>
+
+
+
+

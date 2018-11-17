@@ -1,0 +1,165 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top : -50px;
+    padding : 20px;
+}
+
+.page-header {
+    background-color : brown;
+    padding : 30px;
+    margin : 0;
+    text-align :center;
+    color : white;
+}
+
+#nxt2{
+    display :none;
+}
+
+#wait {
+    display:none; 
+    text-align:center;
+}
+#wait2 {
+    display:none; 
+    text-align:center;
+}
+#wait3 {
+    display:none; 
+    text-align:center;
+}
+#wait4 {
+    display:none; 
+    text-align:center;
+}
+#waitimg {
+    margin: 0 auto; 
+}
+#wait2img {
+    margin: 0 auto;
+     
+}
+#wait3img, #wait3img {
+    margin: 0 auto;
+     
+}
+.bod {
+    padding: 70px;
+    margin: 0 auto;
+    float:none;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+.adminBody{
+    padding: 70px;
+    margin: 0 auto;
+    float:none;
+    max-width: 1000px;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+.adminviewbody{
+    padding: 70px;
+    margin: 0 auto;
+    float:none;
+    max-width: 1200px;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+.successBody{
+    padding: 70px;
+    margin: 0 auto;
+    float:none;
+    max-width: 800px;
+    text-align :center;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+   
+}
+*[role="form"] {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.adminForm{
+    max-width:300px;
+    margin: 0 auto;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+dw{
+    text-align:center;
+    margin: 0 auto;
+}
+
+ .studInfo {
+     margin :0 auto;
+     padding: 15px;
+     float:none;
+     max-width: 600px;
+ }
+
+ .vechInfo {
+     margin :0 auto;
+     padding: 15px;
+     float:none;
+     max-width: 900px;
+ }
+  .docUpload {
+     margin :0 auto;
+     padding: 15px;
+     float:none;
+     max-width: 900px;
+ }
+
+  .files input {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 50px 0px 50px 50px;
+    text-align: center !important;
+    margin: 0 auto; 
+}
+.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+ } 
+
+.color input{ background-color:#f1f1f1;}
+/*.files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: #2ea591;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+.files:after {  pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url('../upload.png') ;
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}*/
+
+
+
